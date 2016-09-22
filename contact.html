@@ -37,46 +37,16 @@
 		<h1><span>let's keep in touch</span></h1>
 	<h3>	
 
-<form method="post" id="captcha_form" name="captcha_form" action="mailform.php"><fieldset><ol>
-<li id="ht"><label class="solo" for="htest">Leave this input blank</label><span class="required">(required)</span><input type="text" class="soloinput" name="htest" id="htest" value="" />
-
-	</li><li><label class="solo" for="email">Email address:</label><span class="required">(required)</span><input type="text" class="soloinput" name="email" id="email" value="" />
-
-	</li><li><label class="solo" for="month">Date of birth:</label> <select name="month" id="month">
-		<option value="0"></option>
-		<option value="January">January</option>
-		<option value="February">February</option>
-		<option value="March">March</option>
-		<option value="April">April</option>
-		<option value="May">May</option>
-		<option value="June">June</option>
-		<option value="July">July</option>
-		<option value="August">August</option>
-		<option value="September">September</option>
-		<option value="October">October</option>
-		<option value="November">November</option>
-		<option value="December">December</option>
-	</select> <select name="day" id="day"><option value="0"></option>
-		<option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-	</select><span class="comma" name="comma"> , </span><select name="year" id="year"><option value="0"></option>
-	<?php $minimumage=4; $maximumage=120; /* CHANGE THE MINIMUM AND MAXIMUM AGE AS APPROPRIATE, OR LEAVE THEM AS THEY ARE */ for($i=$minimumage; $i<=$maximumage; $i++) echo '<option value="'.(date("Y")-$minimumage-$i).'">'.(date("Y")-$minimumage-$i).'</option>'?>
-	</select>
-	
-	</li><li><label class="solo" for="subject">Subject:</label><span class="required">(required)</span> <select class="soloinput" name="subject" id="subject">
-	<option value=0> </option>
-	<option value=1>Help (Blender)</option>
-		<option value=2>Help (Mine-Imator)</option>
-		<option value=3>Help (Other)</option>
-		</select>
-	
-	</li><li><label class="solo" for="message">Message:</label><span class="required">(required)</span>
-<div class="soloinput"><textarea class="soloinput" name="message" id="message" ></textarea>
-						<br /><a class="soloinput" href="http://www.addressmunger.com/contact_form_generator/" style="">Free contact forms at AddressMunger.com</a>
-	
-	
-	<p><input name="submit" id="submit" type="submit" value="Send" style="float: right;" /></p></div>
-	</li></ol>
-</fieldset></form> &nbsp;<br />&nbsp;<br />&nbsp;
+<form action="contact.php" method="post">
+    Your name<br>
+    <input type="text" name="cf_name"><br>
+    Your e-mail<br>
+    <input type="text" name="cf_email"><br>
+    Message<br>
+    <textarea name="cf_message"><br>
+    <input type="submit" value="Send">
+    <input type="reset" value="Clear">
+</form>
 
 
 
