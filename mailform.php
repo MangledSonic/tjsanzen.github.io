@@ -80,17 +80,9 @@ function checkpriority($field,$checkrequirepriority) {
 		if(!preg_match("/^[\d]$/",$field)) die("Improper priority detected. Please hit your browser back button and try again.");
 	}
 }
-if ($dontsendemail == 0) $dontsendemail = spamcheck($_REQUEST["htest"]);
-function checkcaptcha() {
-			session_start();
-			if ($_SESSION["pass"] != $_POST["userpass"]) {
-				die("Sorry, you failed the CAPTCHA. Note that the CAPTCHA is case-sensitive. Please hit your browser back button and try again.");
-				return 1;
-			}
-		}
-	
-		if ($dontsendemail == 0) $dontsendemail = checkcaptcha($email);
-	
+$month = $_REQUEST['month']; $day = $_REQUEST['day']; $year = $_REQUEST['year'];checkmonth($month,0); if(!preg_match("/^[\s]{0,10}$|^[\d]{2}$/",$day)) die("You did not choose a proper birth day. Please hit your browser back button and try again."); if(!preg_match("/^[\s]{0,10}$|^[\d]{4}$/",$year)) die("You did not choose a proper birth year. Please hit your browser back button and try again."); if ($dontsendemail == 0) $dontsendemail = spamcheck($_REQUEST["htest"]);
+if ($dontsendemail == 0) $dontsendemail = spamcheck($month)+spamcheck($day)+spamcheck($year);
+
 if ($dontsendemail == 0) $dontsendemail = checkemail($email);
 if ($dontsendemail == 0) $dontsendemail = spamcheck($email);
 if ($dontsendemail == 0) $dontsendemail = spamcheck($subject);
@@ -102,6 +94,7 @@ if ($dontsendemail == 0) $dontsendemail = strlencheck($message,10,10000,"The mes
 if ($dontsendemail == 0) $dontsendemail = strlencheck($emailaddress,8,255,"You have not selected a recipient of your message. Please hit your browser back button and check your entry.<br />","Possible spam detected. Please hit your browser back button and choose a recipient for your email.");
 if ($dontsendemail == 0) {
 	$message="";
+	$message.="Date of birth: ".$month." ".$day.", ".$year."\r\n";
 	
 	$message=$message."\r\nMessage:\r\n".$_REQUEST['message'];
 	mail($emailaddress,"$subject",$message,"From: $email" ); include "email_sent.php";
